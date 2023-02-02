@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 const db = require('./app/model/model')
 db.sequelize.sync()
@@ -12,10 +13,14 @@ db.sequelize.sync()
     console.log('Error', err)
   })
 
+  
+app.get('/', (req, res) => {
+  res.send({ message: 'Hello World' })
+})
+  
+const router = require('./app/routes/routes')
+app.use('/', router)
+
 app.listen(PORT, () => {
   console.log(`App is listening in port ${PORT}`);
 });
-
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello World' })
-})

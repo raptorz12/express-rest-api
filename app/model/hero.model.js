@@ -9,13 +9,13 @@ module.exports = (sequelize, Sequelize) => {
     aliasName: {
       type: DataTypes.STRING,
     },
-    Quirk: {
-      type: DataTypes.STRING
-    },
-    Affiliation: {
+    quirk: {
       type: DataTypes.STRING,
     },
-    Age: {
+    affiliation: {
+      type: DataTypes.STRING,
+    },
+    age: {
       type: DataTypes.INTEGER,
     }
   })
