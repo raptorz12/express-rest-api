@@ -5,17 +5,17 @@ const Op = db.Sequelize.Op
 //Create hero data
 const createHero = (req, res) => {
   //Validate request
-  if (!req.body.fullName) {
+  if (!req.body.name) {
     res.status(400).send({ 
-      message: 'Full name cannot be empty!' 
+      message: 'Name cannot be empty!' 
     })
     return
   }
 
   //Create hero object to store body request
   const hero = {
-    fullName : req.body.fullName,
-    aliasName : req.body.aliasName,
+    name : req.body.name,
+    alias : req.body.alias,
     quirk : req.body.quirk,
     affiliation: req.body.affiliation,
     age: req.body.age
@@ -37,7 +37,15 @@ const createHero = (req, res) => {
 
 //Get all heroes data
 const getAllHeroes = (req, res) => {
-  Heroes.findAll()
+  //Get name from query params
+  const name = req.query.name ? req.query.name : null
+
+  Heroes.findAll({
+    //Check name to add in where clause
+    where: name ? {
+      name: {[Op.like]: `%${name}%`}
+    } : null
+  })
   .then(data => {
     res.status(200).send({
       message: 'Heroes data found!', 
@@ -82,8 +90,8 @@ const updateHero = (req, res) => {
   
   //Create hero object to store body request
   const hero = {
-    fullName: req.body.fullName,
-    aliasName: req.body.aliasName,
+    name: req.body.name,
+    alias: req.body.alias,
     quirk: req.body.quirk,
     affiliation: req.body.affiliation,
     age: req.body.age

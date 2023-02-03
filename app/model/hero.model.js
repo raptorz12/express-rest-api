@@ -2,11 +2,11 @@ const { DataTypes } = require("sequelize")
 
 module.exports = (sequelize, Sequelize) => {
   const Heroes = sequelize.define('Hero', {
-    fullName: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    aliasName: {
+    alias: {
       type: DataTypes.STRING,
     },
     quirk: {
