@@ -1,5 +1,5 @@
 const db = require('../model/model')
-const Heros = db.heros
+const Heroes = db.heroes
 const Op = db.Sequelize.Op
 
 //Create hero data
@@ -12,7 +12,7 @@ const createHero = (req, res) => {
     return
   }
 
-  //Create hero object based on request
+  //Create hero object to store body request
   const hero = {
     fullName : req.body.fullName,
     aliasName : req.body.aliasName,
@@ -22,60 +22,65 @@ const createHero = (req, res) => {
   }
 
   //Insert hero data into database
-  Heros.create(hero)
+  Heroes.create(hero)
   .then(data => {
     res.status(200).send({
-      message: 'Hero data inserted',
+      message: 'Hero data successfully inserted!',
       data,
     })
   }).catch(err => {
     res.status(500).send({
-      message: err.message || 'Hero data failed to inserted'
+      message: err.message || 'Hero data failed to be inserted!'
     })
   })
 }
 
-//Get all heros data
-const getAllHeros = (req, res) => {
-  Heros.findAll()
+//Get all heroes data
+const getAllHeroes = (req, res) => {
+  Heroes.findAll()
   .then(data => {
     res.status(200).send({
-      message: 'Heros data found', 
+      message: 'Heroes data found!', 
       data
     })
   }).catch(err => {
     res.status(500).send({
-      message: err.message || 'Heros data could not be retrieved'
+      message: err.message || 'Heroes data could not be retrieved!'
     })
   })
 }
 
 //Get hero data by id
 const getHeroById = (req, res) => {
+  //Get id from params
   const id = req.params.id
 
-  Heros.findByPk(id)
+  //Find hero data based on id
+  Heroes.findByPk(id)
   .then(data => {
     if (data) {
       res.status(200).send({
-        message: 'Hero data found',
+        message: 'Hero data found!',
         data
       })
     } else {
       res.status(404).send({
-        message: 'Hero data not found'
+        message: `Hero data not found, no hero with id ${id}!`
       })
     }
   }).catch(err => {
     res.status(500).send({
-      message: err || 'Error retrieving hero data'
+      message: err.message || 'Hero data could not be retrieved!'
     })
   })
 }
 
+//Update hero data
 const updateHero = (req, res) => {
+  //Get id from params
   const id = req.params.id
   
+  //Create hero object to store body request
   const hero = {
     fullName: req.body.fullName,
     aliasName: req.body.aliasName,
@@ -84,49 +89,51 @@ const updateHero = (req, res) => {
     age: req.body.age
   }
 
-  Heros.update(hero, {
+  Heroes.update(hero, {
     where: {id: id}})
   .then(data => {
     if(data == 1) {
       res.status(200).send({
-        message: 'Hero data updated',
+        message: 'Hero data successfully updated!',
       })
     } else {
       res.status(404).send({
-        message: 'Hero data failed to be updated'
+        message: `Hero data failed to be updated, no hero with id ${id}!`
       })
     }
   }).catch(err => {
     res.status(500).send({
-      message: err || 'Failed updating hero data'
+      message: err || 'Hero data failed to be updated!'
     })
   })
 }
 
+//Delete hero data
 const deleteHero = (req, res) => {
+  //Get id from params
   const id = req.params.id
 
-  Heros.destroy({where: {id: id}})
+  Heroes.destroy({where: {id: id}})
   .then(data => {
     if(data == 1) {
       res.status(200).send({
-        message: 'Hero data deleted successfully'
+        message: 'Hero data successfully deleted!'
       })
     } else {
       res.status(404).send({
-        message: 'Hero data failed to be deleted'
+        message: `Hero data failed to be deleted, no hero with id ${id}!`
       })
     }
   }).catch(err => {
     res.status(500).send({
-      message: 'Hero data failed to be deleted'
+      message: 'Hero data failed to be deleted!'
     })
   })
 }
 
 module.exports = {
   createHero,
-  getAllHeros,
+  getAllHeroes,
   getHeroById,
   updateHero,
   deleteHero

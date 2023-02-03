@@ -16,6 +16,6 @@ const db = {}
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.heros = require('./hero.model')(sequelize, Sequelize)
+db.heroes = require('./hero.model')(sequelize, Sequelize)
 
 module.exports = db

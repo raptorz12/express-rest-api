@@ -6,6 +6,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 const db = require('./app/model/model')
+
+//Sync db
 db.sequelize.sync()
   .then(() => {
     console.log('Database synced successfully')
@@ -13,13 +15,12 @@ db.sequelize.sync()
     console.log('Error', err)
   })
 
-  
 app.get('/', (req, res) => {
   res.send({ message: 'Hello World' })
 })
-  
+
 const router = require('./app/routes/routes')
-app.use('/', router)
+app.use('/api', router)
 
 app.listen(PORT, () => {
   console.log(`App is listening in port ${PORT}`);
