@@ -64,7 +64,7 @@ GET /hero/getallheroes?name=
 Request Query Params
 
 ```http
-    name=Midoriya
+name=Midoriya
 ```
 
 Response
@@ -101,7 +101,7 @@ GET /hero/gethero/:id
 Request Params
 
 ```http
-    id=2
+id=2
 ```
 
 Response
@@ -181,8 +181,8 @@ PUT /hero/updatehero/:id
 
 Request Params
 
-```json
-    id=3
+```http
+id=3
 ```
 
 Request Body
@@ -216,8 +216,8 @@ DELETE /hero/updatehero/:id
 
 Request Params
 
-```json
-    id=3
+```http
+id=3
 ```
 
 Response
