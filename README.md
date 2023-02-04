@@ -14,7 +14,7 @@
 ### Get all heroes
 
 ```http
-  GET /hero/getallheroes
+GET /hero/getallheroes
 ```
 
 #### Example
@@ -52,7 +52,7 @@ Response
 ### Get all heroes based on name
 
 ```http
-  GET /hero/getallheroes?name=
+GET /hero/getallheroes?name=
 ```
 
 | Parameter | Type     | Description                |
@@ -89,7 +89,7 @@ Response
 ### Get hero by id
 
 ```http
-  GET /hero/gethero/:id
+GET /hero/gethero/:id
 ```
 
 | Parameter | Type     | Description                       |
@@ -124,7 +124,7 @@ Response
 ### Create hero
 
 ```http
-  POST /hero/addhero/
+POST /hero/addhero/
 ```
 
 | Parameter | Type     | Description                       |
@@ -167,7 +167,7 @@ Response
 ### Update hero
 
 ```http
-  PUT /hero/updatehero/:id
+PUT /hero/updatehero/:id
 ```
 
 | Parameter | Type     | Description                       |
@@ -207,7 +207,7 @@ Response
 ### Delete hero
 
 ```http
-  DELETE /hero/updatehero/:id
+DELETE /hero/updatehero/:id
 ```
 
 | Parameter | Type     | Description                       |
