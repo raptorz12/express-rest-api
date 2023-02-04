@@ -9,6 +9,13 @@
 - [Sequelize](https://sequelize.org/)
 - MySQL
 
+## Usage
+
+```sh
+1. npm install
+2. npm run start
+```
+
 ## API Reference
 
 ### Get all heroes
@@ -63,7 +70,7 @@ GET /hero/getallheroes?name=
 
 Request Query Params
 
-```http
+```sh
 name=Midoriya
 ```
 
@@ -100,7 +107,7 @@ GET /hero/gethero/:id
 
 Request Params
 
-```http
+```sh
 id=2
 ```
 
@@ -181,7 +188,7 @@ PUT /hero/updatehero/:id
 
 Request Params
 
-```http
+```sh
 id=3
 ```
 
@@ -216,7 +223,7 @@ DELETE /hero/updatehero/:id
 
 Request Params
 
-```http
+```sh
 id=3
 ```
 
