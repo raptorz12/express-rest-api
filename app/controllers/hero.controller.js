@@ -24,7 +24,7 @@ const createHero = (req, res) => {
   //Insert hero data into database
   Heroes.create(hero)
   .then(data => {
-    res.status(200).send({
+    res.status(201).send({
       message: 'Hero data successfully inserted!',
       data,
     })
@@ -101,7 +101,7 @@ const updateHero = (req, res) => {
     where: {id: id}})
   .then(data => {
     if(data == 1) {
-      res.status(200).send({
+      res.status(201).send({
         message: 'Hero data successfully updated!',
       })
     } else {
