@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 const router = require('./app/routes/routes')
-app.use('/api', router)
+app.use('/hero', router)
 
 app.listen(PORT, () => {
   console.log(`App is listening in port ${PORT}`);
